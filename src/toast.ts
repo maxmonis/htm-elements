@@ -13,7 +13,7 @@ export class Toast extends HTMLElement {
    * @param defaultOptions.durationMS the duration of the toast in milliseconds (default is 3000)
    * @param defaultOptions.position the position of the toast on the screen (default is bottom-right)
    */
-  constructor(defaultOptions?: Options) {
+  constructor(defaultOptions?: Omit<Options, "variant">) {
     super()
 
     this.defaultDurationMS = defaultOptions?.durationMS ?? 3000
@@ -26,10 +26,13 @@ export class Toast extends HTMLElement {
     this.classList.remove(
       "bottom",
       "center",
+      "danger",
       "enter",
       "exit",
+      "info",
       "left",
       "right",
+      "success",
       "top"
     )
   }
@@ -51,9 +54,10 @@ export class Toast extends HTMLElement {
   }
 
   /**
-   * @param innerHTML the stringified content of the toast
+   * @param innerHTML the content of the toast, either a string or stringified HTML
    * @param options.durationMS the duration of the toast in milliseconds (default is 3000)
    * @param options.position the position of the toast on the screen (default is bottom-right)
+   * @param options.variant applies a red, blue, or green background with white text
    */
   async show(innerHTML: string, options?: Options) {
     await this.hide()
@@ -63,6 +67,8 @@ export class Toast extends HTMLElement {
     this.classList.add(
       ...(options?.position ?? this.defaultPosition).split("-")
     )
+
+    if (options?.variant) this.classList.add(options.variant)
 
     document.body.append(this)
 
@@ -86,4 +92,5 @@ interface Options {
     | "top-center"
     | "top-left"
     | "top-right"
+  variant?: "danger" | "info" | "success"
 }

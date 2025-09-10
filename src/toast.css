@@ -3,6 +3,7 @@ htm-toast {
   border-color: var(--htm-toast-border, var(--htm-border, black));
   border-radius: 0.5rem;
   border-style: solid;
+  border-width: 1px;
   color: var(--htm-toast-fg, var(--htm-fg, black));
   max-width: 20rem;
   padding: 0.75rem 1.25rem;
@@ -10,7 +11,7 @@ htm-toast {
   transition-duration: 250ms;
   transition-property: bottom, left, right, top;
   transition-timing-function: cubic-bezier(0.75, -0.75, 0.25, 1.5);
-  z-index: 10;
+  z-index: 10000;
 }
 
 htm-toast.bottom {
@@ -56,6 +57,24 @@ htm-toast.top {
 
 htm-toast.top.enter {
   top: 1.25rem;
+}
+
+.htm-toast.danger {
+  background-color: var(--htm-toast-danger, var(--htm-danger, #991b1b));
+  border: none;
+  color: white;
+}
+
+.htm-toast.info {
+  background-color: var(--htm-toast-info, var(--htm-info, #1e40af));
+  border: none;
+  color: white;
+}
+
+.htm-toast.success {
+  background-color: var(--htm-toast-success, var(--htm-success, #166534));
+  border: none;
+  color: white;
 }
 
 @media (prefers-reduced-motion: reduce) {
