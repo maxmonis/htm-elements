@@ -1,0 +1,41 @@
+{
+  "author": "Max Monis",
+  "description": "A set of vanilla web components (toast, modal, etc.)",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.2.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./styles.css": {
+      "import": "./dist/styles.css",
+      "require": "./dist/styles.css"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "web-components",
+    "vanilla-js",
+    "toast",
+    "ui"
+  ],
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "name": "htm-elements",
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "dev": "vite"
+  },
+  "type": "commonjs",
+  "types": "dist/index.d.ts",
+  "version": "0.0.0"
+}

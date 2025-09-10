@@ -1,0 +1,65 @@
+htm-toast {
+  background-color: var(--htm-toast-bg, var(--htm-bg, white));
+  border-color: var(--htm-toast-border, var(--htm-border, black));
+  border-radius: 0.5rem;
+  border-style: solid;
+  color: var(--htm-toast-fg, var(--htm-fg, black));
+  max-width: 20rem;
+  padding: 0.75rem 1.25rem;
+  position: fixed;
+  transition-duration: 250ms;
+  transition-property: bottom, left, right, top;
+  transition-timing-function: cubic-bezier(0.75, -0.75, 0.25, 1.5);
+  z-index: 10;
+}
+
+htm-toast.bottom {
+  bottom: -10rem;
+}
+
+htm-toast.bottom.enter {
+  bottom: 1.25rem;
+}
+
+htm-toast.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+htm-toast.center.bottom.exit {
+  bottom: -10rem;
+}
+
+htm-toast.center.top.exit {
+  top: -10rem;
+}
+
+htm-toast.left {
+  left: 1.25rem;
+}
+
+htm-toast.left.exit {
+  left: -20rem;
+}
+
+htm-toast.right {
+  right: 1.25rem;
+}
+
+htm-toast.right.exit {
+  right: -20rem;
+}
+
+htm-toast.top {
+  top: -10rem;
+}
+
+htm-toast.top.enter {
+  top: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  htm-toast {
+    transition-duration: 0ms;
+  }
+}

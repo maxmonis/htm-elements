@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext"
+  },
+  "include": ["src"]
+}
