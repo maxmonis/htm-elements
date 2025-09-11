@@ -3,20 +3,20 @@ import "./toast.css"
 export class Toast extends HTMLElement {
   role = "alert"
 
-  private readonly defaultDurationMS: NonNullable<Options["durationMS"]>
+  private readonly defaultDuration: NonNullable<Options["duration"]>
   private readonly defaultPosition: NonNullable<Options["position"]>
 
   private timeout: null | ReturnType<typeof setTimeout> = null
 
   /**
    * @param defaultOptions defaults for all toasts which can be overridden when you call show
-   * @param defaultOptions.durationMS the duration of the toast in milliseconds (default is 3000)
+   * @param defaultOptions.duration the duration of the toast in milliseconds (default is 3000)
    * @param defaultOptions.position the position of the toast on the screen (default is bottom-right)
    */
   constructor(defaultOptions?: Omit<Options, "variant">) {
     super()
 
-    this.defaultDurationMS = defaultOptions?.durationMS ?? 3000
+    this.defaultDuration = defaultOptions?.duration ?? 3000
     this.defaultPosition = defaultOptions?.position ?? "bottom-right"
 
     this.className = "htm-toast"
@@ -55,7 +55,7 @@ export class Toast extends HTMLElement {
 
   /**
    * @param innerHTML the content of the toast, either a string or stringified HTML
-   * @param options.durationMS the duration of the toast in milliseconds (default is 3000)
+   * @param options.duration the duration of the toast in milliseconds (default is 3000)
    * @param options.position the position of the toast on the screen (default is bottom-right)
    * @param options.variant applies a red, blue, or green background with white text
    */
@@ -76,7 +76,7 @@ export class Toast extends HTMLElement {
       this.classList.add("enter")
       this.timeout = setTimeout(() => {
         this.hide()
-      }, options?.durationMS ?? this.defaultDurationMS)
+      }, options?.duration ?? this.defaultDuration)
     }, 50)
   }
 }
@@ -84,7 +84,7 @@ export class Toast extends HTMLElement {
 customElements.define("htm-toast", Toast)
 
 interface Options {
-  durationMS?: number
+  duration?: number
   position?:
     | "bottom-center"
     | "bottom-left"
