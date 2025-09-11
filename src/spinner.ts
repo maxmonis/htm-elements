@@ -15,7 +15,7 @@ export class Spinner extends HTMLElement {
    * @param size the height and width of the spinner in pixels, automatically updated to reflect base font size (rem)
    * @param options.hideLoadingText hide the "Loading..." text (not recommended for accessibility)
    */
-  constructor(size: number, options: { hideLoadingText?: boolean }) {
+  constructor(size: number, options?: { hideLoadingText?: boolean }) {
     super()
 
     this.size = size
