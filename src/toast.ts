@@ -6,17 +6,9 @@ import { getTransitionDuration } from "./utils"
  * To use the toast component, you can create an instance of the `Toast` class and call the `show` method with the desired content and options.
  * Example usage:
  * ```ts
- * const toast = new Toast()
+ * let toast = new Toast()
  * toast.show("This is a toast message", { duration: 5000, position: "top-right", variant: "success" })
  * ```
- * The `show` method accepts the following parameters:
- * - `innerHTML`: The content of the toast, either a string or stringified HTML.
- * - `options`: An optional object that can include:
- *   - `duration`: The duration of the toast in milliseconds (default is 3000).
- *   - `onHide`: An optional callback which runs after the toast is removed from the screen.
- *   - `position`: The position of the toast on the screen (default is "bottom-right"). Possible values are "bottom-center", "bottom-left", "bottom-right", "top-center", "top-left", and "top-right".
- *   - `variant`: Applies a red, blue, or green background with white text. Possible values are "danger", "info", and "success".
- * The toast will automatically hide after the specified duration, but you can also call the `hide` method to remove it manually.
  * When you initialize the `Toast` class, you can provide default options that will be used for all toasts unless overridden in the `show` method.
  */
 export class Toast extends HTMLElement {
@@ -30,7 +22,6 @@ export class Toast extends HTMLElement {
   private transitionDuration = getTransitionDuration(this)
 
   /**
-   * @param defaultOptions defaults for all toasts which can be overridden when you call show
    * @param defaultOptions.duration the duration of the toast in milliseconds (default is 3000)
    * @param defaultOptions.position the position of the toast on the screen (default is bottom-right)
    */
@@ -88,7 +79,21 @@ export class Toast extends HTMLElement {
    * @param options.position the position of the toast on the screen (default is bottom-right)
    * @param options.variant applies a red, blue, or green background with white text
    */
-  async show(innerHTML: string, options?: Options) {
+  async show(
+    innerHTML: string,
+    options?: {
+      duration?: number
+      onHide?: () => void
+      position?:
+        | "bottom-center"
+        | "bottom-left"
+        | "bottom-right"
+        | "top-center"
+        | "top-left"
+        | "top-right"
+      variant?: "danger" | "info" | "success"
+    }
+  ) {
     await this.hide()
 
     this.innerHTML = innerHTML
@@ -114,15 +119,4 @@ export class Toast extends HTMLElement {
 
 customElements.define("htm-toast", Toast)
 
-interface Options {
-  duration?: number
-  onHide?: () => void
-  position?:
-    | "bottom-center"
-    | "bottom-left"
-    | "bottom-right"
-    | "top-center"
-    | "top-left"
-    | "top-right"
-  variant?: "danger" | "info" | "success"
-}
+type Options = NonNullable<Parameters<Toast["show"]>[1]>
