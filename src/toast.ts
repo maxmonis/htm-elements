@@ -24,6 +24,7 @@ export class Toast extends HTMLElement {
   private readonly defaultDuration: NonNullable<Options["duration"]>
   private readonly defaultPosition: NonNullable<Options["position"]>
 
+  private onHide: Options["onHide"]
   private timeout: null | ReturnType<typeof setTimeout> = null
   private transitionDuration = getTransitionDuration(this)
 
@@ -32,7 +33,7 @@ export class Toast extends HTMLElement {
    * @param defaultOptions.duration the duration of the toast in milliseconds (default is 3000)
    * @param defaultOptions.position the position of the toast on the screen (default is bottom-right)
    */
-  constructor(defaultOptions?: Omit<Options, "variant">) {
+  constructor(defaultOptions?: Omit<Options, "onHide" | "variant">) {
     super()
 
     this.defaultDuration = defaultOptions?.duration ?? 3000
@@ -46,6 +47,8 @@ export class Toast extends HTMLElement {
   }
 
   disconnectedCallback() {
+    delete this.onHide
+
     this.classList.remove(
       "bottom",
       "center",
@@ -70,6 +73,7 @@ export class Toast extends HTMLElement {
 
       this.timeout = setTimeout(() => {
         this.timeout = null
+        this.onHide?.()
         this.remove()
         resolve(true)
       }, this.transitionDuration)
@@ -79,6 +83,7 @@ export class Toast extends HTMLElement {
   /**
    * @param innerHTML the content of the toast, either a string or stringified HTML
    * @param options.duration the duration of the toast in milliseconds (default is 3000)
+   * @param options.onHide callback for when the toast is removed from the screen
    * @param options.position the position of the toast on the screen (default is bottom-right)
    * @param options.variant applies a red, blue, or green background with white text
    */
@@ -86,6 +91,8 @@ export class Toast extends HTMLElement {
     await this.hide()
 
     this.innerHTML = innerHTML
+
+    this.onHide = options?.onHide
 
     this.classList.add(
       ...(options?.position ?? this.defaultPosition).split("-")
@@ -108,6 +115,7 @@ customElements.define("htm-toast", Toast)
 
 interface Options {
   duration?: number
+  onHide?: () => void
   position?:
     | "bottom-center"
     | "bottom-left"
