@@ -50,9 +50,10 @@ You can also add more specific styles for individual elements, for example if
 you want to style the toast:
 
 ```css
---htm-toast-fg
---htm-toast-bg
---htm-toast-border
+htm-toast {
+  --htm-bg: var(--color-fg);
+  --htm-fg: var(--color-bg);
+}
 ```
 
 It's easy to override any element's styling as well, the default styles are
