@@ -1,4 +1,5 @@
 import "./toast.css"
+import { getTransitionDuration } from "./utils"
 
 export class Toast extends HTMLElement {
   role = "alert"
@@ -7,6 +8,7 @@ export class Toast extends HTMLElement {
   private readonly defaultPosition: NonNullable<Options["position"]>
 
   private timeout: null | ReturnType<typeof setTimeout> = null
+  private transitionDuration = getTransitionDuration(this)
 
   /**
    * @param defaultOptions defaults for all toasts which can be overridden when you call show
@@ -20,6 +22,10 @@ export class Toast extends HTMLElement {
     this.defaultPosition = defaultOptions?.position ?? "bottom-right"
 
     this.className = "htm-toast"
+  }
+
+  connectedCallback() {
+    this.transitionDuration = getTransitionDuration(this)
   }
 
   disconnectedCallback() {
@@ -49,7 +55,7 @@ export class Toast extends HTMLElement {
         this.timeout = null
         this.remove()
         resolve(true)
-      }, 250)
+      }, this.transitionDuration)
     })
   }
 

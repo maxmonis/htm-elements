@@ -1,14 +1,14 @@
 htm-toast {
   background-color: var(--htm-bg, white);
   border-color: var(--htm-border, black);
-  border-radius: 0.5rem;
+  border-radius: var(--htm-radius, 0.5rem);
   border-style: solid;
   border-width: 1px;
   color: var(--htm-fg, black);
-  max-width: min(calc(100vw - 2.5rem), 20rem);
-  padding: 0.75rem 1.25rem;
+  max-width: min(calc(100vw - calc(var(--htm-spacing, 1.25rem) * 2)), 20rem);
+  padding: calc(var(--htm-spacing, 1.25rem) * 0.6) var(--htm-spacing, 1.25rem);
   position: fixed;
-  transition-duration: 250ms;
+  transition-duration: var(--htm-duration, 250ms);
   transition-property: bottom, left, right, top;
   transition-timing-function: cubic-bezier(0.75, -0.75, 0.25, 1.5);
   width: max-content;
@@ -16,19 +16,19 @@ htm-toast {
 }
 
 htm-toast.danger {
-  background-color: var(--htm-danger, #991b1b);
+  background-color: var(--htm-bg-danger, #991b1b);
   border: none;
   color: white;
 }
 
 htm-toast.info {
-  background-color: var(--htm-info, #1e40af);
+  background-color: var(--htm-bg-info, #1e40af);
   border: none;
   color: white;
 }
 
 htm-toast.success {
-  background-color: var(--htm-success, #166534);
+  background-color: var(--htm-bg-success, #166534);
   border: none;
   color: white;
 }
