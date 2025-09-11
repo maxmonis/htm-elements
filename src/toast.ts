@@ -13,6 +13,7 @@ import { getTransitionDuration } from "./utils"
  * - `innerHTML`: The content of the toast, either a string or stringified HTML.
  * - `options`: An optional object that can include:
  *   - `duration`: The duration of the toast in milliseconds (default is 3000).
+ *   - `onHide`: An optional callback which runs after the toast is removed from the screen.
  *   - `position`: The position of the toast on the screen (default is "bottom-right"). Possible values are "bottom-center", "bottom-left", "bottom-right", "top-center", "top-left", and "top-right".
  *   - `variant`: Applies a red, blue, or green background with white text. Possible values are "danger", "info", and "success".
  * The toast will automatically hide after the specified duration, but you can also call the `hide` method to remove it manually.
