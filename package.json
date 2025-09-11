@@ -39,7 +39,8 @@
   "name": "htm-elements",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
-    "dev": "vite"
+    "dev": "vite",
+    "prod": "npm run build && npm pack"
   },
   "type": "commonjs",
   "types": "dist/index.d.ts",
