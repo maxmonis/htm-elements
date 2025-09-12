@@ -69,7 +69,7 @@ document.body.append(spinner)
 Appears onscreen and displays a message to the user, then automatically removes
 itself. When you instantiate the class you can optionally pass in a default
 `duration` and/or `position`. All toasts will inherit these defaults, which can
-be overriden when you call the `show` message to display a toast. If no position
+be overriden when you call the `show` method to display a toast. If no position
 is passed, toasts will appear in the bottom right. If no duration is passed,
 toasts will be removed after 3000ms.
 
