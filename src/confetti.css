@@ -1,8 +1,5 @@
-htm-confetti {
-  height: 100vh;
-  left: 0;
+htm-confetti canvas {
   pointer-events: none;
   position: fixed;
   top: 0;
-  width: 100vw;
 }

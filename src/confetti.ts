@@ -66,8 +66,7 @@ export class Confetti extends HTMLElement {
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId)
 
     let count = innerWidth / 2
-    for (let i = 0; i < count; i++)
-      this.particles.push(new Particle(this.canvas, this.ctx))
+    for (let i = 0; i < count; i++) this.particles.push(new Particle(this.ctx))
 
     this.renderParticles()
 
@@ -81,7 +80,6 @@ class Particle {
   opacity: number
   y: number
 
-  private readonly canvas: HTMLCanvasElement
   private readonly ctx: CanvasRenderingContext2D
 
   private readonly color: string
@@ -93,8 +91,7 @@ class Particle {
   private rotation: number
   private x: number
 
-  constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
-    this.canvas = canvas
+  constructor(ctx: CanvasRenderingContext2D) {
     this.ctx = ctx
 
     this.color = `hsl(${Math.random() * 360}, 70%, 60%)`
@@ -108,8 +105,8 @@ class Particle {
     this.speedX = Math.random() * 3 - 1.5
     this.speedY = Math.random() * 5 + 2
 
-    this.x = Math.random() * canvas.width
-    this.y = Math.random() * canvas.height - canvas.height
+    this.x = Math.random() * innerWidth
+    this.y = Math.random() * innerHeight - innerHeight
   }
 
   draw() {
@@ -129,7 +126,7 @@ class Particle {
     this.x += this.speedX
     this.rotation += this.rotationSpeed
 
-    this.opacity = 1 - this.y / this.canvas.height
+    this.opacity = 1 - this.y / innerHeight
     if (this.opacity < 0) this.opacity = 0
   }
 }
