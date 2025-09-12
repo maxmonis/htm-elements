@@ -25,8 +25,6 @@ export class Spinner extends HTMLElement {
     this.append(this.spinner)
 
     if (!options?.hideLoadingText) this.append(text)
-
-    this.className = Spinner.tag
   }
 
   connectedCallback() {

@@ -32,8 +32,6 @@ export class Toast extends HTMLElement {
 
     this.defaultDuration = defaultOptions?.duration ?? 3000
     this.defaultPosition = defaultOptions?.position ?? "bottom-right"
-
-    this.className = Toast.tag
   }
 
   connectedCallback() {

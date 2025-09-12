@@ -18,8 +18,6 @@ export class Confetti extends HTMLElement {
     this.ctx = this.canvas.getContext("2d")!
 
     this.append(this.canvas)
-
-    this.className = Confetti.tag
   }
 
   connectedCallback() {
