@@ -57,6 +57,8 @@ export class Confetti extends HTMLElement {
    * Shows confetti falling from the top of the viewport for 10 seconds
    */
   start() {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     document.body.prepend(this)
 
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId)
