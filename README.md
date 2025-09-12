@@ -83,10 +83,13 @@ You can manually hide the toast using its `hide` method.
 Valid positions are "bottom-center", "bottom-left", "bottom-right",
 "top-center", "top-left", and "top-right".
 
-Valid variants are "danger" (sets background to --htm-bg-danger, which is red by
-default), "info" (sets background to --htm-bg-info, which is blue by default),
-and "success" (sets background to --htm-bg-success, which is green by default).
-Toasts with a variant have white text by default.
+Valid variants are "danger" (sets the background color to `--htm-bg-danger`,
+which is red by default), "info" (sets the background color to `--htm-bg-info`,
+which is blue by default), and "success" (sets the background color to
+`--htm-bg-success`, which is green by default). Toasts with a variant have white
+text by default.
+
+The contents of the toast can be either a simple string or stringified HTML.
 
 ```ts
 import { Toast } from "htm-elements"
