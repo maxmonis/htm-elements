@@ -1,7 +1,7 @@
 # HTM Elements
 
-An unopinionated set of drop-in web components (toast, etc.) built with
-TypeScript and no framework.
+An unopinionated set of drop-in web components (confetti, spinner, toast) built
+with TypeScript and no framework.
 
 🚨🚨🚨 NOT STABLE 🚨🚨🚨 I'm still in the early iteration phase of using this
 internally for my own projects and may ship breaking changes. I'll bump the
