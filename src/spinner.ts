@@ -4,6 +4,8 @@ import "./spinner.css"
  * Renders a loading spinner, or "Loading..." if the user prefers reduced motion
  */
 export class Spinner extends HTMLElement {
+  static tag = "htm-spinner"
+
   ariaBusy = "true"
   role = "alert"
 
@@ -24,7 +26,7 @@ export class Spinner extends HTMLElement {
 
     if (!options?.hideLoadingText) this.append(text)
 
-    this.className = "htm-spinner"
+    this.className = Spinner.tag
   }
 
   connectedCallback() {
@@ -46,8 +48,6 @@ export class Spinner extends HTMLElement {
     this.spinner.setAttribute("width", size)
   }
 }
-
-customElements.define("htm-spinner", Spinner)
 
 let spinner = document.createElementNS("http://www.w3.org/2000/svg", "svg")
 spinner.setAttribute("preserveAspectRatio", "xMidYMid")

@@ -12,6 +12,8 @@ import { getTransitionDuration } from "./utils"
  * When you initialize the `Toast` class, you can provide default options that will be used for all toasts unless overridden in the `show` method.
  */
 export class Toast extends HTMLElement {
+  static tag = "htm-toast"
+
   role = "alert"
 
   private readonly defaultDuration: NonNullable<Options["duration"]>
@@ -31,7 +33,7 @@ export class Toast extends HTMLElement {
     this.defaultDuration = defaultOptions?.duration ?? 3000
     this.defaultPosition = defaultOptions?.position ?? "bottom-right"
 
-    this.className = "htm-toast"
+    this.className = Toast.tag
   }
 
   connectedCallback() {
@@ -116,7 +118,5 @@ export class Toast extends HTMLElement {
     }, 50)
   }
 }
-
-customElements.define("htm-toast", Toast)
 
 type Options = NonNullable<Parameters<Toast["show"]>[1]>
