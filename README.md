@@ -9,31 +9,36 @@ with TypeScript and no framework.
 npm install htm-elements
 ```
 
-## Setup
+## Elements
 
-Be sure to import the index CSS file in either TS/JS:
+NOTE: while you can import from the base package, the recommended approach is to
+import the exact element(s) you need. This will ensure proper tree shaking. For
+example:
 
 ```ts
-import "htm-elements/style.css"
+// Don't do this ❌
+import { Toast } from "htm-elements"
+import "htm-elements/styles.css"
 ```
 
-...or CSS:
-
-```css
-@import "htm-elements/style.css";
+```ts
+// Do this instead ✅
+import { Toast } from "htm-elements/toast"
+import "htm-elements/toast.css"
 ```
 
-You only need to import it once if you're using an SPA, and once per page if
-it's an MPA (only in pages which use this dependency).
-
-## Elements
+As you can likely infer, `"htm-elements/styles.css"` includes all styles of this
+project. If you're using every element, importing it is a simple way of ensuring
+all styles are applied. Otherwise, the recommended approach is to only import
+the CSS you need.
 
 ### Confetti
 
 Displays animated confetti for ten seconds when its `start` method is called.
 
 ```ts
-import { Confetti } from "htm-elements"
+import { Confetti } from "htm-elements/confetti"
+import "htm-elements/confetti.css"
 
 let confetti = new Confetti()
 confetti.start()
@@ -54,7 +59,8 @@ be 32px. However, if you pass 32 and your root font-size is 14px, the computed
 size will be 28px.
 
 ```ts
-import { Spinner } from "htm-elements"
+import { Spinner } from "htm-elements/spinner"
+import "htm-elements/spinner.css"
 
 let spinner = new Spinner(40)
 document.body.append(spinner)
@@ -92,7 +98,8 @@ text by default.
 The contents of the toast can be either a simple string or stringified HTML.
 
 ```ts
-import { Toast } from "htm-elements"
+import { Toast } from "htm-elements/toast"
+import "htm-elements/toast.css"
 
 let toast = new Toast({ position: "top-center" })
 toast.show("Hello world!", { duration: 2500 })

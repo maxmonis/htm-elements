@@ -1,6 +1,6 @@
 {
   "author": "Max Monis",
-  "description": "A set of vanilla web components (toast, modal, etc.)",
+  "description": "A set of vanilla web components (confetti, spinner, toast)",
   "devDependencies": {
     "@types/node": "^24.3.1",
     "prettier": "^3.6.2",
@@ -10,18 +10,40 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.es.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs.js"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./confetti": {
+      "types": "./dist/confetti.d.ts",
+      "import": "./dist/confetti.es.js",
+      "require": "./dist/confetti.cjs.js"
+    },
+    "./confetti.css": {
+      "import": "./dist/confetti.css",
+      "require": "./dist/confetti.css"
+    },
+    "./spinner": {
+      "types": "./dist/spinner.d.ts",
+      "import": "./dist/spinner.es.js",
+      "require": "./dist/spinner.cjs.js"
+    },
+    "./spinner.css": {
+      "import": "./dist/spinner.css",
+      "require": "./dist/spinner.css"
     },
     "./styles.css": {
-      "import": "./dist/styles.css",
-      "require": "./dist/styles.css"
+      "import": "./dist/index.css",
+      "require": "./dist/index.css"
+    },
+    "./toast": {
+      "types": "./dist/toast.d.ts",
+      "import": "./dist/toast.es.js",
+      "require": "./dist/toast.cjs.js"
+    },
+    "./toast.css": {
+      "import": "./dist/toast.css",
+      "require": "./dist/toast.css"
     }
   },
   "files": [
@@ -42,7 +64,20 @@
     "dev": "vite",
     "prod": "npm run build && npm pack"
   },
-  "type": "commonjs",
+  "type": "module",
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "confetti": [
+        "./dist/confetti.d.ts"
+      ],
+      "spinner": [
+        "./dist/spinner.d.ts"
+      ],
+      "toast": [
+        "./dist/toast.d.ts"
+      ]
+    }
+  },
   "version": "0.1.3"
 }

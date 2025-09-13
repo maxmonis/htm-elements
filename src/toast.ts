@@ -123,4 +123,6 @@ export class Toast extends HTMLElement {
   }
 }
 
+customElements.define("htm-toast", Toast)
+
 type Options = NonNullable<Parameters<Toast["show"]>[1]>

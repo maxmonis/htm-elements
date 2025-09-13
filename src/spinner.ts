@@ -47,6 +47,8 @@ export class Spinner extends HTMLElement {
   }
 }
 
+customElements.define("htm-spinner", Spinner)
+
 let spinner = document.createElementNS("http://www.w3.org/2000/svg", "svg")
 spinner.setAttribute("preserveAspectRatio", "xMidYMid")
 spinner.setAttribute("viewBox", "0 0 100 100")

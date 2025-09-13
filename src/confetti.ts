@@ -4,8 +4,6 @@ import "./confetti.css"
  * Exposes a start method which shows confetti falling from the top of the viewport for 10 seconds
  */
 export class Confetti extends HTMLElement {
-  static tag = "htm-confetti"
-
   private readonly canvas = document.createElement("canvas")
   private readonly ctx: CanvasRenderingContext2D
 
@@ -75,6 +73,8 @@ export class Confetti extends HTMLElement {
     }, 10_000)
   }
 }
+
+customElements.define("htm-confetti", Confetti)
 
 class Particle {
   opacity: number

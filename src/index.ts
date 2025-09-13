@@ -1,8 +1,5 @@
-import { Confetti } from "./confetti"
-import { Spinner } from "./spinner"
-import { Toast } from "./toast"
+import "./index.css"
 
-for (let Element of [Confetti, Spinner, Toast])
-  customElements.define(Element.tag, Element)
-
-export { Confetti, Spinner, Toast }
+export { Confetti } from "./confetti"
+export { Spinner } from "./spinner"
+export { Toast } from "./toast"
