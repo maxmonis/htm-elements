@@ -1,5 +1,4 @@
 import "./toast.css"
-import { getTransitionDuration } from "./utils"
 
 /**
  * A toast is a small, non-disruptive message that appears on the screen to provide feedback to the user, appearing for a short duration and then disappearing automatically.
@@ -21,7 +20,7 @@ export class Toast extends HTMLElement {
 
   private onHide: Options["onHide"]
   private timeout: null | ReturnType<typeof setTimeout> = null
-  private transitionDuration = getTransitionDuration(this)
+  private transitionDuration = 250
 
   /**
    * @param defaultOptions.duration the duration of the toast in milliseconds (default is 3000)
@@ -35,7 +34,7 @@ export class Toast extends HTMLElement {
   }
 
   connectedCallback() {
-    this.transitionDuration = getTransitionDuration(this)
+    this.getTransitionDuration()
   }
 
   disconnectedCallback() {
@@ -53,6 +52,13 @@ export class Toast extends HTMLElement {
       "success",
       "top"
     )
+  }
+
+  private getTransitionDuration() {
+    let duration = parseInt(
+      getComputedStyle(this).getPropertyValue("--htm-duration")
+    )
+    if (duration >= 0) this.transitionDuration = duration
   }
 
   async hide() {
