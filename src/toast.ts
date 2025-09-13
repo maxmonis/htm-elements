@@ -21,14 +21,14 @@ export class Toast extends HTMLElement {
   private transitionDuration = 250
 
   /**
-   * @param defaultOptions.duration the duration of the toast in milliseconds (default is 3000)
-   * @param defaultOptions.position the position of the toast on the screen (default is bottom-right)
+   * @param defaults.duration the duration of the toast in milliseconds (default is 3000)
+   * @param defaults.position the position of the toast on the screen (default is bottom-right)
    */
-  constructor(defaultOptions?: Omit<Options, "onHide" | "variant">) {
+  constructor(defaults?: Omit<Options, "onHide" | "variant">) {
     super()
 
-    this.defaultDuration = defaultOptions?.duration ?? 3000
-    this.defaultPosition = defaultOptions?.position ?? "bottom-right"
+    this.defaultDuration = defaults?.duration ?? 3000
+    this.defaultPosition = defaults?.position ?? "bottom-right"
   }
 
   connectedCallback() {
@@ -114,6 +114,7 @@ export class Toast extends HTMLElement {
 
     this.timeout = setTimeout(() => {
       this.classList.add("enter")
+
       this.timeout = setTimeout(() => {
         this.hide()
       }, options?.duration ?? this.defaultDuration)

@@ -1,12 +1,12 @@
 htm-spinner svg {
-  animation: calc(var(--htm-duration, 250ms) * 5) linear spin infinite;
+  animation: calc(var(--htm-duration, 250ms) * 5) linear htm-spin infinite;
 }
 
 htm-spinner p {
   display: none;
 }
 
-@keyframes spin {
+@keyframes htm-spin {
   0% {
     stroke-dashoffset: 502;
     stroke-dasharray: 150.6 100.4;
