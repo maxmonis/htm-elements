@@ -11,8 +11,6 @@ import "./toast.css"
  * When you initialize the `Toast` class, you can provide default options that will be used for all toasts unless overridden in the `show` method.
  */
 export class Toast extends HTMLElement {
-  static tag = "htm-toast"
-
   role = "alert"
 
   private readonly defaultDuration: NonNullable<Options["duration"]>

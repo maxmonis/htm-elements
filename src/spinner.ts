@@ -4,8 +4,6 @@ import "./spinner.css"
  * Renders a loading spinner, or "Loading..." if the user prefers reduced motion
  */
 export class Spinner extends HTMLElement {
-  static tag = "htm-spinner"
-
   ariaBusy = "true"
   role = "alert"
 
