@@ -36,9 +36,7 @@ export class Confetti extends HTMLElement {
   private renderParticles = () => {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-    this.particles = this.particles.filter(
-      p => p.opacity && p.y < this.canvas.height
-    )
+    this.particles = this.particles.filter(p => p.opacity)
 
     for (let particle of this.particles) {
       particle.update()
@@ -63,8 +61,10 @@ export class Confetti extends HTMLElement {
 
     if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId)
 
-    let count = innerWidth / 2
-    for (let i = 0; i < count; i++) this.particles.push(new Particle(this.ctx))
+    let { height, width } = this.canvas
+    let count = width * 0.75
+    for (let i = 0; i < count; i++)
+      this.particles.push(new Particle(this.ctx, height, width))
 
     this.renderParticles()
 
@@ -81,6 +81,7 @@ class Particle {
   y: number
 
   private readonly ctx: CanvasRenderingContext2D
+  private readonly height: number
 
   private readonly color: string
   private readonly rotationSpeed: number
@@ -91,8 +92,9 @@ class Particle {
   private rotation: number
   private x: number
 
-  constructor(ctx: CanvasRenderingContext2D) {
+  constructor(ctx: CanvasRenderingContext2D, height: number, width: number) {
     this.ctx = ctx
+    this.height = height
 
     this.color = `hsl(${Math.random() * 360}, 70%, 60%)`
     this.opacity = 1
@@ -105,8 +107,8 @@ class Particle {
     this.speedX = Math.random() * 3 - 1.5
     this.speedY = Math.random() * 5 + 2
 
-    this.x = Math.random() * innerWidth
-    this.y = Math.random() * innerHeight - innerHeight
+    this.x = Math.random() * width
+    this.y = Math.random() * height - height
   }
 
   draw() {
@@ -122,11 +124,9 @@ class Particle {
   }
 
   update() {
-    this.y += this.speedY
-    this.x += this.speedX
+    this.opacity = Math.max(0, 1 - this.y / this.height)
     this.rotation += this.rotationSpeed
-
-    this.opacity = 1 - this.y / innerHeight
-    if (this.opacity < 0) this.opacity = 0
+    this.x += this.speedX
+    this.y += this.speedY
   }
 }
