@@ -12,19 +12,7 @@ export default defineConfig({
         toast: resolve(__dirname, "src/toast.ts")
       },
       fileName: (format, entryName) => `${entryName}.${format}.js`,
-      formats: ["cjs", "es"],
-      name: "htm-elements"
-    },
-    rollupOptions: {
-      external: [],
-      output: {
-        assetFileNames({ names }) {
-          return names[0].endsWith(".css")
-            ? `${names[0].replace(/\.css$/, "")}.css`
-            : "[name]-[hash][extname]"
-        },
-        preserveModules: true
-      }
+      formats: ["cjs", "es"]
     }
   }
 })
