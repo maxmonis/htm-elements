@@ -71,11 +71,20 @@
       "confetti": [
         "./dist/confetti.d.ts"
       ],
+      "confetti.css": [
+        "./dist/confetti.css"
+      ],
       "spinner": [
         "./dist/spinner.d.ts"
       ],
+      "spinner.css": [
+        "./dist/spinner.css"
+      ],
       "toast": [
         "./dist/toast.d.ts"
+      ],
+      "toast.css": [
+        "./dist/toast.css"
       ]
     }
   },
