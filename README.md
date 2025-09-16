@@ -36,6 +36,8 @@ the CSS you need.
 
 Displays animated confetti for ten seconds when its `start` method is called.
 
+Hidden for users who prefer reduced motion.
+
 ```ts
 import { Confetti } from "htm-elements/confetti"
 import "htm-elements/confetti.css"
@@ -57,6 +59,11 @@ NOTE: the pixel value will be updated based on the value of one rem. For
 example, if you pass 32 and your root font-size is 16px, the computed size will
 be 32px. However, if you pass 32 and your root font-size is 14px, the computed
 size will be 28px.
+
+Displays "Loading..." text instead of the spinner to users who prefer reduced
+motion. For accessibility reasons, we recommend not hiding it, but if you need
+to you can do so using the `hideLoadingText` property of the optional config
+object.
 
 ```ts
 import { Spinner } from "htm-elements/spinner"
@@ -96,6 +103,9 @@ which is blue by default), and "success" (sets the background color to
 text by default.
 
 The contents of the toast can be either a simple string or stringified HTML.
+
+The toast slides in and out, but these animations are removed for users who
+prefer reduced motion.
 
 ```ts
 import { Toast } from "htm-elements/toast"
