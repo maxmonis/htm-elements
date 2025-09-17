@@ -11,13 +11,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./confetti": {
       "types": "./dist/confetti.d.ts",
-      "import": "./dist/confetti.es.js",
-      "require": "./dist/confetti.cjs.js"
+      "import": "./dist/confetti.js",
+      "require": "./dist/confetti.cjs"
     },
     "./confetti.css": {
       "import": "./dist/confetti.css",
@@ -25,8 +25,8 @@
     },
     "./spinner": {
       "types": "./dist/spinner.d.ts",
-      "import": "./dist/spinner.es.js",
-      "require": "./dist/spinner.cjs.js"
+      "import": "./dist/spinner.js",
+      "require": "./dist/spinner.cjs"
     },
     "./spinner.css": {
       "import": "./dist/spinner.css",
@@ -38,8 +38,8 @@
     },
     "./toast": {
       "types": "./dist/toast.d.ts",
-      "import": "./dist/toast.es.js",
-      "require": "./dist/toast.cjs.js"
+      "import": "./dist/toast.js",
+      "require": "./dist/toast.cjs"
     },
     "./toast.css": {
       "import": "./dist/toast.css",
@@ -56,8 +56,8 @@
     "ui"
   ],
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "name": "htm-elements",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",

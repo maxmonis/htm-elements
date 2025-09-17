@@ -11,7 +11,8 @@ export default defineConfig({
         spinner: resolve(__dirname, "src/spinner.ts"),
         toast: resolve(__dirname, "src/toast.ts")
       },
-      fileName: (format, entryName) => `${entryName}.${format}.js`,
+      fileName: (format, entryName) =>
+        `${entryName}.${format == "es" ? "js" : format}`,
       formats: ["cjs", "es"]
     }
   }
