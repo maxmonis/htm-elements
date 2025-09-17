@@ -84,6 +84,9 @@
       "spinner.css": [
         "./dist/spinner.css"
       ],
+      "styles.css": [
+        "./dist/index.css"
+      ],
       "toast": [
         "./dist/toast.d.ts"
       ],
