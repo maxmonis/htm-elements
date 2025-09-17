@@ -1,5 +1,8 @@
 {
   "author": "Max Monis",
+  "contributors": [
+    "Max Monis <maxmonis.com>"
+  ],
   "description": "A set of vanilla web components (confetti, spinner, toast)",
   "devDependencies": {
     "@types/node": "^24.3.1",
@@ -59,6 +62,7 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "name": "htm-elements",
+  "repository": "https://github.com/maxmonis/htm-elements",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
     "dev": "vite",
