@@ -4,9 +4,6 @@ import "./spinner.css"
  * Renders a loading spinner, or "Loading..." if the user prefers reduced motion
  */
 export class Spinner extends HTMLElement {
-  ariaBusy = "true"
-  role = "alert"
-
   private readonly size: number
 
   private spinner = spinner
@@ -17,6 +14,9 @@ export class Spinner extends HTMLElement {
    */
   constructor(size: number, options?: { hideLoadingText?: boolean }) {
     super()
+
+    this.ariaBusy = "true"
+    this.role = "alert"
 
     this.size = size
 

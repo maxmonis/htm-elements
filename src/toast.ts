@@ -11,8 +11,6 @@ import "./toast.css"
  * When you initialize the `Toast` class, you can provide default options that will be used for all toasts unless overridden in the `show` method.
  */
 export class Toast extends HTMLElement {
-  role = "alert"
-
   private readonly defaultDuration: NonNullable<Options["duration"]>
   private readonly defaultPosition: NonNullable<Options["position"]>
 
@@ -26,6 +24,8 @@ export class Toast extends HTMLElement {
    */
   constructor(defaults?: Omit<Options, "onHide" | "variant">) {
     super()
+
+    this.role = "alert"
 
     this.defaultDuration = defaults?.duration ?? 3000
     this.defaultPosition = defaults?.position ?? "bottom-right"
